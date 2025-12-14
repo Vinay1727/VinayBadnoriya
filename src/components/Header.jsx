@@ -4,7 +4,7 @@ import profileImg from '../assets/Copy.jpg';
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('site-theme') || 'light');
+  const [theme, setTheme] = useState(localStorage.getItem('site-theme') || 'dark');
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
   const roles = [
@@ -93,16 +93,24 @@ export default function Header() {
         </nav>
 
         <div className="header-theme">
-          <label htmlFor="themeSelect" className="theme-label">Theme:</label>
-          <select
-            id="themeSelect"
-            className="theme-dropdown"
-            value={theme}
-            onChange={(e) => handleThemeChange(e.target.value)}
-          >
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
+          <div className="theme-toggle-wrapper">
+            <input
+              type="checkbox"
+              className="theme-checkbox"
+              id="theme-toggle"
+              checked={theme === 'dark'}
+              onChange={(e) => handleThemeChange(e.target.checked ? 'dark' : 'light')}
+            />
+            <label className="theme-toggle-label" htmlFor="theme-toggle">
+              <span className="icon-sun">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              </span>
+              <span className="icon-moon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+              </span>
+              <span className="toggle-ball"></span>
+            </label>
+          </div>
         </div>
       </div>
     </header>

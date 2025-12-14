@@ -25,7 +25,7 @@ import ScrollRobot from './components/ScrollRobot';
 export default function App() {
   useEffect(() => {
     // Apply saved theme from localStorage
-    const savedTheme = localStorage.getItem('site-theme') || 'light';
+    const savedTheme = localStorage.getItem('site-theme') || 'dark';
 
     if (savedTheme !== 'light') {
       document.documentElement.classList.add(savedTheme + '-theme');
